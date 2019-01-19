@@ -20,7 +20,7 @@ public class DynamoDBService implements DataService {
 
     @Override
     public User SelectUser(int userId) {
-
+        return null;
     }
 
     @Override
