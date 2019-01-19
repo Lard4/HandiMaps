@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".RatingsActivity"
+    tools:showIn="@layout/activity_ratings">
+
+
+    <TextView
+        android:id="@+id/ratings_textView"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="311dp"
+        android:text="Post Route Rating"
+
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratings_Difficulty_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <SeekBar
+        android:id="@+id/ratings_seekBar1"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="150dp"
+        android:max="100"
+        android:progress="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_Difficulty_textView" />
+
+    <TextView
+        android:id="@+id/ratings_steepness_textview"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="15dp"
+        android:text="Steepness of Route"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratings_seekBar1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.305" />
+
+
+    <SeekBar
+        android:id="@+id/ratings_steepness_seekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="625dp"
+        android:max="2"
+        android:progress="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_Difficulty_textView"
+        app:layout_constraintVertical_bias="0.689" />
+
+    <TextView
+        android:id="@+id/ratings_Difficulty_textView"
+        android:layout_width="300dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="15dp"
+        android:text="Rate the Difficulty of the Route"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratings_seekBar1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ratings_leastDiff"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="Least Difficult"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ratings_mostDiff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_seekBar1"
+        app:layout_constraintVertical_bias="0.004" />
+
+    <TextView
+        android:id="@+id/ratings_mostDiff"
+        android:layout_width="86dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="259dp"
+        android:text="Most Difficult"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ratings_leastDiff"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_seekBar1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ratings_flat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="262dp"
+        android:layout_marginBottom="134dp"
+        android:text="Flat"
+        app:layout_constraintBottom_toTopOf="@+id/ratings_seekBar1"
+        app:layout_constraintEnd_toStartOf="@+id/ratings_verySteep"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_steepness_seekBar"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <TextView
+        android:id="@+id/ratings_verySteep"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="140dp"
+        android:text="Very Steep"
+        app:layout_constraintBottom_toTopOf="@+id/ratings_seekBar1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ratings_flat"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_steepness_seekBar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Switch
+        android:id="@+id/ratings_switch"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="165dp"
+        android:layout_marginBottom="74dp"
+        android:textAlignment="center"
+        android:showText="true"
+        android:textOff="No"
+        android:textOn="Yes"
+        app:layout_constraintBottom_toTopOf="@+id/ratings_Difficulty_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_steepness_seekBar"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/ratings_bool_textView"
+        android:layout_width="300dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="123dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="16dp"
+        android:text="Were there hazards on the route?"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratings_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_steepness_seekBar" />
+
+    <Button
+        android:id="@+id/ratings_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="24dp"
+        android:text="Submit"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratings_seekBar1" />
+</android.support.constraint.ConstraintLayout>
