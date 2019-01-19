@@ -1,19 +1,16 @@
 package com.example.handimaps;
 
-import com.example.handimaps.DataService;
-import com.example.handimaps.Route;
-import com.example.handimaps.User;
-
-import com.am;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 
 public class DynamoDBService implements DataService {
     public DynamoDBService() {
-
+        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
     }
 
     @Override
     public Route SelectRoute(int routeId) {
-
+        return null;
     }
 
     @Override
@@ -23,7 +20,7 @@ public class DynamoDBService implements DataService {
 
     @Override
     public User SelectUser(int userId) {
-        return null;
+
     }
 
     @Override
