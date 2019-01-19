@@ -1,14 +1,14 @@
 package com.example.handimaps;
 
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.example.handimaps.DataService;
 import com.example.handimaps.Route;
 import com.example.handimaps.User;
 
-import com.am;
-
 public class DynamoDBService implements DataService {
     public DynamoDBService() {
-
+        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
     }
 
     @Override
