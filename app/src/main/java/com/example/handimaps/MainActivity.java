@@ -12,6 +12,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
+
+        //remove
         DataService dataService = new DynamoDBService();
+        System.out.println(dataService.SelectUser(1));
     }
 }
