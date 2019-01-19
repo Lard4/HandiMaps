@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HandiMaps</string>
+    <string name="title_activity_ratings">RatingsActivity</string>
 </resources>
