@@ -1,5 +1,6 @@
 package com.example.handimaps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.Toast;
 
 public class RatingsActivity extends AppCompatActivity {
 
@@ -89,8 +91,11 @@ public class RatingsActivity extends AppCompatActivity {
                 //      average total values with this new one and update the Route
                 //else
                 //  Apply local variables to API functions to create a new Route
-                
+
                 //TODO: Confirm that I am not in charge of creating the polyline JSON.
+                Toast toast = Toast.makeText(view.getContext(), "Thank you!", Toast.LENGTH_SHORT);
+                toast.show();
+                startActivity(new Intent(view.getContext(), MapsActivity.class));
             }
         });
     }
