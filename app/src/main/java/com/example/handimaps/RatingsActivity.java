@@ -89,7 +89,7 @@ public class RatingsActivity extends AppCompatActivity {
                 //      average total values with this new one and update the Route
                 //else
                 //  Apply local variables to API functions to create a new Route
-
+                
                 //TODO: Confirm that I am not in charge of creating the polyline JSON.
             }
         });

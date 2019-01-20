@@ -1,13 +1,17 @@
 package com.example.handimaps;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -18,12 +22,15 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +40,10 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 public class RouteActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private LatLng prev;
+    private Polyline pLine;
+    private boolean going = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +53,16 @@ public class RouteActivity extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Button button = (Button) findViewById(R.id.trackButton);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), RatingsActivity.class));
+            }
+        });
+
     }
 
     private LocationRequest mLocationRequest;
@@ -61,19 +82,7 @@ public class RouteActivity extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         final List<LatLng> coordinates = new ArrayList<LatLng>();
-//        mMap = googleMap;
-//        FusedLocationProviderClient locProv = LocationServices.getFusedLocationProviderClient(this);
-//
-//        LocationListener listener = new LocationListener() {
-//            @Override
-//            public void onLocationChanged(Location location) {
-//                if(location != null){
-//                    coordinates.add(new LatLng(location.getLatitude(), location.getLongitude()));
-//                }
-//            }
-//        };
-//
-//        locProv.requestLocationUpdates();
+        mMap = googleMap;
         if(checkPermissions()) {
             googleMap.setMyLocationEnabled(true);
             startLocationUpdates();
@@ -81,13 +90,17 @@ public class RouteActivity extends FragmentActivity implements OnMapReadyCallbac
     }
 
     public void onLocationChanged(Location location) {
-        // New location has now been determined
-        String msg = "Updated Location: " +
-                Double.toString(location.getLatitude()) + "," +
-                Double.toString(location.getLongitude());
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        // You can now create a LatLng Object for use with maps
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        LatLng curr = new LatLng(location.getLatitude(), location.getLongitude());
+        if (prev == null) {
+            prev = curr;
+        } else if (curr != null){
+            if(going) {
+                mMap.addPolyline(new PolylineOptions().add(prev, curr).width(8).color(Color.BLUE));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(curr));
+            mMap.moveCamera(CameraUpdateFactory.zoomTo(18));
+            prev = curr;
+        }
     }
 
     private boolean checkPermissions() {
